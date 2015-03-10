@@ -12,8 +12,6 @@ import java.util.Iterator;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
-import javax.swing.JOptionPane;
-
 import org.apache.http.HttpEntity;
 import org.apache.http.HttpResponse;
 import org.apache.http.client.ClientProtocolException;
@@ -25,8 +23,6 @@ import org.apache.http.entity.mime.MultipartEntity;
 import org.apache.http.entity.mime.content.FileBody;
 import org.apache.http.entity.mime.content.StringBody;
 import org.apache.http.impl.client.DefaultHttpClient;
-
-
 import org.idevlab.rjc.RedisNode;
 import org.idevlab.rjc.RedisOperations;
 import org.idevlab.rjc.ds.SimpleDataSource;
@@ -223,7 +219,7 @@ public class UploadData implements Runnable, SubscribeListener, MessageListener
 		HttpClient hc= new DefaultHttpClient();
 		
 		/*Get request to create a unique id*/
-		HttpGet get = new HttpGet("http://godel.ece.vt.edu/cloudcv/matlab/");
+		HttpGet get = new HttpGet("http://cloudcv.org/api/");
 		HttpResponse getResponse;
 		
 		String token = new String();
@@ -263,7 +259,7 @@ public class UploadData implements Runnable, SubscribeListener, MessageListener
 	public File[] getImageList()
 	{
 		
-		final Pattern pat= Pattern.compile("([^\\s]+(\\.(jpg|png|gif|bmp))$)", Pattern.CASE_INSENSITIVE);
+		final Pattern pat= Pattern.compile(".+?(\\.(jpg|png|gif|bmp))$", Pattern.CASE_INSENSITIVE);
 		
 		File dirList = new File(this._source_path);
 		
@@ -273,9 +269,9 @@ public class UploadData implements Runnable, SubscribeListener, MessageListener
 			public boolean accept(File file) {
 				if(file.isFile())
 				{
-					pat.matcher(file.getName()).matches();
-
-					return true;
+					if (pat.matcher(file.getName()).matches())
+					    return true;
+					else return false;
 				}
 				else return false;
 				
@@ -294,7 +290,7 @@ public class UploadData implements Runnable, SubscribeListener, MessageListener
 		int imagecount = imagelist.length;
 		
 		HttpClient hc= new DefaultHttpClient();
-		HttpPost post = new HttpPost("http://godel.ece.vt.edu/cloudcv/matlab/");
+		HttpPost post = new HttpPost("http://cloudcv.org/api/");
 		
 		MultipartEntity reqentity = new MultipartEntity(HttpMultipartMode.BROWSER_COMPATIBLE);
 

@@ -21,9 +21,9 @@ public class Sockets_CCV {
         System.out.println(Job.files.size());
         System.out.println(Job.files.toString());
 
-        ConfigParser cp = new ConfigParser("/home/dexter/workspace/mcloudcv/config.json");
+        ConfigParser cp = new ConfigParser("config.json");
 		cp.readConfigFile();
-		int val = cp.parseArguments("","","features");
+		int val = cp.parseArguments("","","classify");
 		cp.getParams();
 		
 		if(val==1)

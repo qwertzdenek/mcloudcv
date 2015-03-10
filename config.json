@@ -1,21 +1,13 @@
 {
-    "exec" : "ImageStitch",
-"config":
-[
-    {
-        "name": "ImageStitch",
-        "path": "/home/dexter/Pictures/test_download/1",
-        "output": "/home/dexter/Pictures/test_download",
-        "params" :{
-          "warp" : "plane"  
+    "exec": "classify",
+    "maxim": 10,
+    "config": [
+        {
+        "name": "classify",
+        "path": "/home/haswi/test_download/images",
+        "output": "/home/haswi/test_download",
+        "params": {}
         }
-    },
-    
-    {
-        "name": "VOCRelease5",
-        "path": "/home/dexter/Pictures/test_download/2",
-        "output": "/home/dexter/Pictures/test_download",
-        "params": {"Models": "all"}
-    }
-]
+    ]
 }
+

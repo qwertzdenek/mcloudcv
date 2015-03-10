@@ -210,14 +210,14 @@ class SocketConnection implements SubscribeListener, MessageListener
 		
 		if(socket==null)
 		{
-			socket = new SocketIO("http://godel.ece.vt.edu:8000/");
+			socket = new SocketIO("http://cloudcv.org/api/");
 		}
 		
 		if(!socket.isConnected())
 		{
 			try 
 			{
-                socket = new SocketIO("http://godel.ece.vt.edu:8000/");
+                socket = new SocketIO("http://cloudcv.org/api/");
 				socket.connect(new SocketCallback(socket,this._exec_name));
 
 			} catch (Exception e) {
