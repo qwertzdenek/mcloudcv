@@ -1,0 +1,13 @@
+{
+    "exec": "classify",
+    "maxim": 10,
+    "config": [
+        {
+        "name": "classify",
+        "path": "/home/haswi/test_download/images",
+        "output": "/home/haswi/test_download",
+        "params": {}
+        }
+    ]
+}
+

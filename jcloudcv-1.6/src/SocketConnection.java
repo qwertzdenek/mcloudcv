@@ -68,6 +68,7 @@ class SocketCallback implements IOCallback
 		try
         {
 			jobj = new JSONObject(args[0].toString());
+			System.out.println(jobj.toString());
 			Iterator<String> itr=jobj.keys();
 			while(itr.hasNext())
 			{
